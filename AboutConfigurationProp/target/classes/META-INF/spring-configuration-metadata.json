@@ -1,0 +1,30 @@
+{
+  "groups": [{
+    "name": "test",
+    "type": "com.example.properties.TestProperties",
+    "sourceType": "com.example.properties.TestProperties"
+  }],
+  "properties": [
+    {
+      "name": "test.one",
+      "type": "java.lang.String",
+      "sourceType": "com.example.properties.TestProperties"
+    },
+    {
+      "name": "test.one",
+      "type": "java.lang.String",
+      "sourceType": "com.example.properties.TestProperties"
+    },
+    {
+      "name": "test.two",
+      "type": "java.lang.String",
+      "sourceType": "com.example.properties.TestProperties"
+    },
+    {
+      "name": "test.two",
+      "type": "java.lang.String",
+      "sourceType": "com.example.properties.TestProperties"
+    }
+  ],
+  "hints": []
+}
