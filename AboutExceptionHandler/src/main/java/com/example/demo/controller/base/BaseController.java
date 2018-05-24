@@ -22,22 +22,26 @@ public class BaseController {
 		return this.makeResponseBody(request, e);
 	}
 	
-	private Map<String, Object> makeResponseBody(HttpServletRequest request, ServiceException e) {
-		
-		Map<String, Object> output = new HashMap<>();
-		output.put("code", e.getCode());
-		output.put("message", e.getMessage());
-		
-		return output;
-	}
-
 	@ExceptionHandler(Exception.class)
-	public void catchException() {
+	public Map<String, Object> catchException(HttpServletRequest request, Exception e) {
+		
 		LOG.debug("Exception catched !");
+		return this.makeResponseBody(request, e);
 	}
 	
 	@ExceptionHandler(ArithmeticException.class)
 	public void catchArithmeticException() {
 		LOG.debug("ArithmeticException catched");
+	}
+	
+	private Map<String, Object> makeResponseBody(HttpServletRequest request, Exception e) {
+		
+		Map<String, Object> output = new HashMap<>();
+		output.put("message", e.getMessage());
+		if(e instanceof ServiceException) {
+			output.put("code", ((ServiceException) e).getCode());
+		}
+		
+		return output;
 	}
 }

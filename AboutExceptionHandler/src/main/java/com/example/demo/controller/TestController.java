@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -39,11 +42,20 @@ public class TestController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/doSomething", method = RequestMethod.GET)
-	public void doSomething(HttpServletRequest request) {
+	public void doSomething(HttpServletRequest request) throws ServiceException {
 		try {
 			exceptionInvokeService.doSomething();
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			throw e;
 		}
+	}
+	
+	@RequestMapping(value = "/doOtherSomething", method = RequestMethod.GET)
+	public Map<String, Object> doOtherSomething(HttpServletRequest request) {
+		
+		Map<String, Object> output = new HashMap<>();
+		output.put("age", 28);
+		output.put("name", "wkkim");
+		return output;
 	}
 }

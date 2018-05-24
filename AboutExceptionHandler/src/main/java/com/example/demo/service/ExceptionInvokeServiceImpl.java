@@ -40,6 +40,7 @@ public class ExceptionInvokeServiceImpl implements ExceptionInvokeService {
 		
 		LOG.debug("do invoke 5/0 exception");
 		int result = 0/5;
+		LOG.debug("result = {}", result);	// this line is not work
 	}
 
 }
