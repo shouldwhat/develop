@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.example.demo.exception.ServiceException;
 
+//@ControllerAdvice			// extend 또는 @ControllerAdvice 사용
 public class BaseController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(BaseController.class);
