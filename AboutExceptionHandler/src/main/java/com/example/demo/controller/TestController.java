@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.controller.base.BaseController;
+import com.example.demo.exception.CustomException;
 import com.example.demo.exception.ServiceException;
 import com.example.demo.service.base.ExceptionInvokeService;
 
@@ -39,6 +40,11 @@ public class TestController extends BaseController {
 	@RequestMapping(value = "/arithmetic-exception", method = RequestMethod.GET)
 	public void invokeArithmeticException() throws Exception {
 		exceptionInvokeService.invokeArithmeticException();
+	}
+	
+	@RequestMapping(value = "/custom-exception", method = RequestMethod.GET)
+	public void invokeCustomException(HttpServletRequest request) throws CustomException {
+		throw new CustomException();
 	}
 	
 	@RequestMapping(value = "/doSomething", method = RequestMethod.GET)

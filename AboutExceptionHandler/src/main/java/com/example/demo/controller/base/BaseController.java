@@ -23,12 +23,12 @@ public class BaseController {
 		return this.makeResponseBody(request, e);
 	}
 	
-	@ExceptionHandler(Exception.class)
-	public Map<String, Object> catchException(HttpServletRequest request, Exception e) {
-		
-		LOG.debug("Exception catched !");
-		return this.makeResponseBody(request, e);
-	}
+//	@ExceptionHandler(Exception.class)
+//	public Map<String, Object> catchException(HttpServletRequest request, Exception e) {
+//		
+//		LOG.debug("Exception catched !");
+//		return this.makeResponseBody(request, e);
+//	}
 	
 	@ExceptionHandler(ArithmeticException.class)
 	public void catchArithmeticException() {
