@@ -1,5 +1,10 @@
 package com.example.demo.AboutJunitTest.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,9 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class JsonControllerTest {
@@ -35,5 +37,14 @@ public class JsonControllerTest {
 			.andExpect(jsonPath("$.name", Matchers.is("wkkim")))
 			.andExpect(jsonPath("$.age", Matchers.is(28)))
 			.andExpect(jsonPath("$.*", Matchers.hasSize(3)));		// check response json key size
+	}
+	
+	@Test
+	public void jsonPost() throws Exception {
+		
+		String requestBody = "{ name:wkkim, age:28 }";
+		mockMvc
+			.perform(post("/json").contentType(MediaType.APPLICATION_JSON).content(requestBody))
+			.andExpect(status().isOk());
 	}
 }
