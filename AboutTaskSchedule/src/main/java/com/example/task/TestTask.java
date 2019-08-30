@@ -19,6 +19,6 @@ public class TestTask
 	@Scheduled(fixedRate = 5000)
 	public void run()
 	{
-		LOG.info("------------------------ task start = {}", Calendar.getInstance().getTime());
+		LOG.info("------------------------ TestTask execute = {}", Calendar.getInstance().getTime());
 	}
 }
