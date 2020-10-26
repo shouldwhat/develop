@@ -22,10 +22,9 @@ public class ProduceController {
 	@Autowired
 	private KafkaTemplate<String, Message> kafkaMessageTemplate;
 	
-	@PostMapping(value = "/produces/{message}/model")
+	@PostMapping(value = "/produces/{message}")
 	public void produceModel(HttpServletRequest request,
 			@PathVariable("message") String message) {
 		kafkaMessageTemplate.send(TOPIC, new Message(message));
-		LOG.info("send => {}", message);
 	}
 }
